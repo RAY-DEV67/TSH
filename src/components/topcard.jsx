@@ -54,6 +54,7 @@ export function TopCard(props) {
           userId: user?.uid,
         postId: post.id,
         images: post.images,
+        color: post.color,
         title: post.title,
         price1: post.price1,
         price2: post.price2,

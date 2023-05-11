@@ -1,69 +1,66 @@
 import {
-    // getDoc,
-    getDocs,
-    collection,
-    doc,
-    // addDoc,
-    where,
-    query,
-    deleteDoc,
-  } from "firebase/firestore";
-  import db from "../config/firebase";
-  import { useAuthState } from "react-firebase-hooks/auth";
-  import { useState} from "react";
-  import { auth} from "../config/firebase";
-  import { useNavigate } from "react-router-dom";
-  
-  export function EcommerceCard(props) {
-    const { post } = props;
-    const [user] = useAuthState(auth);
-    const navigate = useNavigate();
-    const [Cart, setCart] = useState([]);
-    const [loading, setloading] = useState(false);
-    const [size, setsize] = useState(`${post.size1}`);
-  
-    const removeCart = async () => {
-      setloading(true)
-      try {
-  
-        const docRef = collection(db, "Cart");
-        const CartToDeleteQuery = query(
-          docRef,
-          where("postId", "==", post?.id),
-          where("userId", "==", user?.uid)
+  // getDoc,
+  getDocs,
+  collection,
+  doc,
+  // addDoc,
+  where,
+  query,
+  deleteDoc,
+} from "firebase/firestore";
+import db from "../config/firebase";
+import { useAuthState } from "react-firebase-hooks/auth";
+import { useState } from "react";
+import { auth } from "../config/firebase";
+import { useNavigate } from "react-router-dom";
+
+export function EcommerceCard(props) {
+  const { post } = props;
+  const [user] = useAuthState(auth);
+  const navigate = useNavigate();
+  const [Cart, setCart] = useState([]);
+  const [loading, setloading] = useState(false);
+  const [size, setsize] = useState(`${post.size1}`);
+
+  const removeCart = async () => {
+    setloading(true);
+    try {
+      const docRef = collection(db, "Cart");
+      const CartToDeleteQuery = query(
+        docRef,
+        where("postId", "==", post?.id),
+        where("userId", "==", user?.uid)
+      );
+
+      const CartToDeleteData = await getDocs(CartToDeleteQuery);
+      const CartToDelete = doc(db, "Cart", post.id);
+      await deleteDoc(CartToDelete);
+      window.location.reload();
+      console.log("DocumentDeleted");
+      setloading(false);
+      if (user) {
+        setCart((prev) =>
+          prev.filter((like) => like.saveId === CartToDeleteData?.docs[0].id)
         );
-  
-        const CartToDeleteData = await getDocs(CartToDeleteQuery);
-        const CartToDelete = doc(db, "Cart", post.id);
-        await deleteDoc(CartToDelete);
-        window.location.reload()
-        console.log("DocumentDeleted");
-        setloading(false)
-        if (user) {
-          setCart((prev) =>
-            prev.filter((like) => like.saveId === CartToDeleteData?.docs[0].id)
-          );
-          console.log(Cart);
-        }
-      } catch (err) {
-        console.log(err);
+        console.log(Cart);
       }
-    };
-  
-    const formatCur = function (value, locale, currency) {
-      return new Intl.NumberFormat(locale, {
-        style: 'currency',
-        currency: currency,
-      }).format(value);
-    };
-  
-      
-  
-    console.log(post)
-  
-    return (
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+  const formatCur = function (value, locale, currency) {
+    return new Intl.NumberFormat(locale, {
+      style: "currency",
+      currency: currency,
+    }).format(value);
+  };
+
+  console.log(post);
+
+  return (
+    <div className="flex flex-col items-center">
       <div className="flex flex-col items-center">
-        <div className="flex flex-col items-center">
         <div className="border-y border-[#86574E] lg:h-[190px] w-[90vw] lg:w-[100%] flex rounded-[10px]">
           <div className="w-[40%]">
             <img
@@ -79,37 +76,44 @@ import {
             <div>
               <div className="flex justify-between w-[40vw]">
                 <div className="text-left mx-[0.5rem]">
-        {/* {size == post.size1 ? <h1 className="text-[#86574E] font-bold mt-[0.5rem] text-left">
+                  {/* {size == post.size1 ? <h1 className="text-[#86574E] font-bold mt-[0.5rem] text-left">
           {formatCur(post.price1, "en-NG", "NGN")}
         </h1> : size == post.size2 ? <h1 className="text-[#86574E] font-bold mt-[0.5rem] text-left">
           {formatCur(post.price2, "en-NG", "NGN")}
         </h1> : size == post.size3 ? <h1 className="text-[#86574E] font-bold mt-[0.5rem] text-left">
           {formatCur(post.price3, "en-NG", "NGN")}
         </h1> : ""} */}
-        <div className="text-[#86574E] font-bold mt-[0.5rem] text-left">
-        {formatCur(post.price1, "en-NG", "NGN")}
-        </div>
-      </div>
+                  <div className="text-[#86574E] font-bold mt-[0.5rem] text-left">
+                    {formatCur(post.price1, "en-NG", "NGN")}
+                  </div>
+                </div>
                 {loading ? (
-              <div className="spinner-container px-[0.5rem] pt-[0.5rem] flex justify-center items-center">
-                <div className="Cartloading-spinner"></div>
-              </div>
-            ) : (
-              <p className="mt-[0.5rem]" onClick={() => {removeCart()}}>X</p>
-            )}
-              
+                  <div className="spinner-container px-[0.5rem] pt-[0.5rem] flex justify-center items-center">
+                    <div className="Cartloading-spinner"></div>
+                  </div>
+                ) : (
+                  <p
+                    className="mt-[0.5rem]"
+                    onClick={() => {
+                      removeCart();
+                    }}
+                  >
+                    X
+                  </p>
+                )}
               </div>
               {/* <p>{post.id}</p> */}
               <div className="w-[90%]">
                 <h1 className="text-left mt-[1rem] text-xl">{post.title}</h1>
               </div>
             </div>
-            <div className="mt-[1rem]">
-      </div>
+            <div className="mt-[1rem]"></div>
+            <p>Colors: {post.color}</p>
           </div>
+          
         </div>
+        
       </div>
-  
-      </div>  );
-  }
-  
+    </div>
+  );
+}

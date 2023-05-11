@@ -37,14 +37,9 @@ import { useNavigate } from "react-router-dom";
                 <h1 className="text-left text-xl">{post.title}</h1>
               </div>
             </div>
-  
-  
-            {/* <div>
-              <p className="mt-[4rem] border px-[1rem] mx-[1rem] text-center">
-                Add to cart
-              </p>
-            </div> */}
-          </div>{" "}
+            <p className="mt-[2rem]">Colors: {post.color}</p>
+
+          </div>
         </div>
       </div>
   

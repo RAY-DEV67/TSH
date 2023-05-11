@@ -26,6 +26,7 @@ export function AddProduct() {
   const [size1, setsize1] = useState("");
   const [size2, setsize2] = useState("");
   const [size3, setsize3] = useState("");
+  const [color, setcolor] = useState("");
 
   const [errors, seterrors] = useState({});
 
@@ -39,6 +40,9 @@ export function AddProduct() {
     }
     if (!title) {
       tempErrors.title = "Please add a title";
+    }
+    if (!color) {
+      tempErrors.color = "Please add a color";
     }
     if (!description) {
       tempErrors.description = "Please input a description for the product";
@@ -62,6 +66,7 @@ export function AddProduct() {
       size2: size2,
       size3: size3,
       title: title,
+      color: color,
       description: description,
       price1: Number(prices1),
       price2: Number(prices2),
@@ -451,6 +456,17 @@ export function AddProduct() {
                   </g>
                 </svg>
               </div>
+
+              <input
+                className="mt-[1rem] py-[0.5rem] rounded-[10px] px-[1rem]"
+                type="text"
+                placeholder="Colors"
+                name="size3"
+                onChange={(e) => {setcolor(e.target.value)}}
+                // value={values.title}
+                // {...register("title")}
+              />
+
 
               <input
                 type="submit"

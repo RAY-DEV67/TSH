@@ -110,7 +110,7 @@ export function CheckOut() {
       emailjs
     .sendForm(
       "service_dtrv7eq",
-      "template_18is4ge",
+      "template_f8qx0m4",
       form.current,
       "0fs2UJE4_uP27Mjo7"
     )
@@ -268,7 +268,7 @@ setstreet(e.target.value)
                 name="Phone"
               />
               {errors.phone && <p className="error">{errors.phone}</p>}
-      <label className="text-left mt-[0.5rem]">Order Message ( Optional )</label>
+      <label className="text-left mt-[0.5rem]">Color</label>
       <textarea name="message" className="border-[#ffc5b9] border rounded-[10px]" />
       <label className="text-left mt-[0.5rem] opacity-0">Payment Picture</label>
       <input
