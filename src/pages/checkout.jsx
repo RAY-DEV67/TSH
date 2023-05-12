@@ -194,9 +194,9 @@ export function CheckOut() {
             <div className="border-[#ffc5b9] border my-[1rem] p-[1rem] text-left">
               <p className="text-center text-xl mb-[0.5rem]">Direct bank transfer</p>
               <p>Make your payment of {sum} directly into our bank account</p>
-              <p>Account Number :</p>
-              <p>Bank Name: </p>
-              <p>Account Name: </p>
+              <p>Account Number: 1025739166</p>
+              <p>Bank Name: Cadmus de vogue</p>
+              <p>Account Name: UBA</p>
               <div className="mt-[1rem]">
                 <h2 className="text-center text-2xl">Add photo</h2>
                 <p className="text-[12px] mt-[1rem]">
