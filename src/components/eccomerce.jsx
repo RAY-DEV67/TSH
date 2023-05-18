@@ -61,7 +61,7 @@ export function EcommerceCard(props) {
   return (
     <div className="flex flex-col items-center">
       <div className="flex flex-col items-center">
-        <div className="border-y border-[#86574E] lg:h-[190px] w-[90vw] lg:w-[100%] flex rounded-[10px]">
+        <div className="border-y border-[#93407d] lg:h-[190px] w-[90vw] lg:w-[100%] flex rounded-[10px]">
           <div className="w-[40%]">
             <img
               src={post.images}
@@ -83,7 +83,7 @@ export function EcommerceCard(props) {
         </h1> : size == post.size3 ? <h1 className="text-[#86574E] font-bold mt-[0.5rem] text-left">
           {formatCur(post.price3, "en-NG", "NGN")}
         </h1> : ""} */}
-                  <div className="text-[#86574E] font-bold mt-[0.5rem] text-left">
+                  <div className="text-[#93407d] font-bold mt-[0.5rem] text-left">
                     {formatCur(post.price1, "en-NG", "NGN")}
                   </div>
                 </div>
@@ -107,8 +107,8 @@ export function EcommerceCard(props) {
                 <h1 className="text-left mt-[1rem] text-xl">{post.title}</h1>
               </div>
             </div>
-            <div className="mt-[1rem]"></div>
-            <p>Colors: {post.color}</p>
+
+         
           </div>
           
         </div>

@@ -183,17 +183,6 @@ export function BuyProduct() {
           </div>
           <div className="mx-[1rem] text-left">
             {/* <h1 className="text-2xl mb-[2rem]">Product Details:</h1> */}
-            {buyProduct?.color ? (
-              <div className="mb-[1rem]">
-                <p className="font-extrabold mb-[0.5rem]">Colors:</p>
-                <p> {buyProduct?.color}</p>
-              </div>
-            ) : (
-              ""
-            )}
-          </div>
-          <div className="mx-[1rem] text-left">
-            {/* <h1 className="text-2xl mb-[2rem]">Product Details:</h1> */}
             {buyProduct?.description ? (
               <div className="mb-[1rem]">
                 <p className="font-extrabold mb-[0.5rem]">Description:</p>
@@ -206,7 +195,7 @@ export function BuyProduct() {
 
           <div className="mx-[1rem] flex justify-center">
             <div
-              className="py-[0.5rem] px-[1rem] rounded-sm mt-[1rem] w-[130px] mb-[0.5rem] bg-[#ffc5b9]"
+              className="py-[0.5rem] px-[1rem] rounded-sm mt-[1rem] w-[130px] mb-[0.5rem] bg-[#93407d]"
               onClick={() => {
                 !user
                   ? navigate("/Profile")
@@ -220,7 +209,7 @@ export function BuyProduct() {
                   <div className="Cartloading-spinner"></div>
                 </div>
               ) : (
-                <p className="text-[#86574E] text-center text-sm w-[100%]">
+                <p className="text-[#ffffff] text-center text-sm w-[100%]">
                   {hasProductBeenSaved ? "Added To Cart!!" : "Add To Cart "}
                 </p>
               )}

@@ -97,7 +97,7 @@ export function Cart() {
 
           {!empty && (
             <div>
-              <div className="flex justify-between mx-[1rem] mt-[3rem] border-y py-[1rem]">
+              <div className="flex justify-between mx-[1rem] mt-[3rem] border-y border-[#93407d] py-[1rem]">
                 <p>SUBTOTAL</p>
                 <p>{sum}</p>
               </div>
@@ -107,13 +107,13 @@ export function Cart() {
                 }}
                 className="flex flex-col items-center"
               >
-                <button className="text-white rounded-[20px] bg-[#deab24] font-bold mt-[2rem] py-[0.5rem] px-[1rem]">
+                <button className="text-white rounded-[20px] bg-[#93407d] font-bold mt-[2rem] py-[0.5rem] px-[1rem]">
                   Check Out
                 </button>
               </div>
             </div>
           )}
-          <p className="text-white lg:hidden text-center bg-[#deab24] fixed text-[10px] w-[4%] left-[93%] top-[3%] z-20 rounded-full">
+          <p className="text-white lg:hidden text-center bg-[#93407d] fixed text-[10px] w-[4%] left-[93%] top-[3%] z-20 rounded-full">
             {saved.length}
           </p>
         </div>
