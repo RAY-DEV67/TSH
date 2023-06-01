@@ -41,9 +41,6 @@ export function AddProduct() {
     if (!title) {
       tempErrors.title = "Please add a title";
     }
-    if (!color) {
-      tempErrors.color = "Please add a color";
-    }
     if (!description) {
       tempErrors.description = "Please input a description for the product";
     }
@@ -130,39 +127,6 @@ export function AddProduct() {
           });
       });
 
-      
-    if (file4 == null) return;
-    storage
-      .ref("/images/" + file4.name)
-      .put(file4)
-      .on("state_changed", () => {
-        storage
-          .ref("images")
-          .child(file4.name)
-          .getDownloadURL()
-          .then((imgUrl) => {
-            updateDoc(docRef, {
-              images4: imgUrl,
-            });
-          });
-      });
-
-      
-    if (file5 == null) return;
-    storage
-      .ref("/images/" + file5.name)
-      .put(file5)
-      .on("state_changed", () => {
-        storage
-          .ref("images")
-          .child(file5.name)
-          .getDownloadURL()
-          .then((imgUrl) => {
-            updateDoc(docRef, {
-              images5: imgUrl,
-            });
-          });
-      });
       setloading(false)
   };
 
